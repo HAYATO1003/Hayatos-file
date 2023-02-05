@@ -120,7 +120,7 @@
 
     $dsn = 'mysql:dbname=tb240619db;host=localhost';
     $user = 'tb-240619';
-    $password = 'feb8BxFrDu';
+    $password = '*******';
     //テーブル作成
     $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
     
@@ -144,8 +144,6 @@ $_POST["pass1"];
 $filename="mission5-1.txt";
 $countfile="3-5-num.txt";
 
- 
-
 //書き込み機能
 if(!empty($_POST["str"]) && empty($_POST["edinum"])){
     if(!empty($_POST["pass1"])){
@@ -157,13 +155,8 @@ if(!empty($_POST["str"]) && empty($_POST["edinum"])){
     $name = $_POST["name"];
     $comment = $_POST["str"]; //好きな名前、好きな言葉は自分で決めること
     $sql -> execute();
-
-   }
-  }
+    }}
     
-
-
-
     //編集機能
     if(!empty($_POST["edi"]) && !empty($_POST["pass3"])){
     $edi=$_POST["edi"];
@@ -178,9 +171,7 @@ if(!empty($_POST["str"]) && empty($_POST["edinum"])){
         if($edi==$ID && $pass3==$PASS){
          $NAME = $row['name'];
          $COMMENT = $row['comment'];
-        }
-        } 
-    }
+        }}}
     
     if(!empty($_POST["edinum"]) && !empty($_POST["str"])){
      $edinum=$_POST["edinum"];      
@@ -192,8 +183,7 @@ if(!empty($_POST["str"]) && empty($_POST["edinum"])){
          $ID = $row['id'];
          $NAME = $row['name'];
          $COMMENT = $row['comment'];
-         $PASS = $row['pass1'];
-           
+         $PASS = $row['pass1'];           
     
     $sql = 'UPDATE tbtest SET name=:name,comment=:comment,date=:date WHERE id=:id';
     $stmt = $pdo->prepare($sql);    
@@ -209,9 +199,7 @@ if(!empty($_POST["str"]) && empty($_POST["edinum"])){
     $comment = $_POST["str"]; //変更したい名前、変更したいコメントは自分で決めること    
     $stmt->execute();  
     }}}
-    
-
-    
+      
     
     //削除機能
     if (!empty($_POST["del"]) && !empty($_POST["pass2"])) { 
@@ -231,9 +219,7 @@ if(!empty($_POST["str"]) && empty($_POST["edinum"])){
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
-    }
-    }
-    }
+    }}}
     
         $sql = 'SELECT * FROM tbtest';
     $stmt = $pdo->query($sql);
