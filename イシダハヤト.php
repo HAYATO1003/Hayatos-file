@@ -116,14 +116,12 @@
 </form>
 
 <?php
-
     $dsn = 'mysql:dbname=tb240619db;host=localhost';
     $user = 'tb-240619';
     $password = '*******';
+    
     //テーブル作成
     $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-    
-
     
     $sql = "CREATE TABLE IF NOT EXISTS tbtest"
     ." ("
@@ -161,7 +159,7 @@ if(!empty($_POST["str"]) && empty($_POST["edinum"])){
     $edi=$_POST["edi"];
     $pass3=$_POST["pass3"];
     
-                $sql = 'SELECT * FROM tbtest';
+    $sql = 'SELECT * FROM tbtest';
     $stmt = $pdo->query($sql);
     $results = $stmt->fetchAll();
         foreach ($results as $row){
@@ -175,7 +173,7 @@ if(!empty($_POST["str"]) && empty($_POST["edinum"])){
     if(!empty($_POST["edinum"]) && !empty($_POST["str"])){
      $edinum=$_POST["edinum"];      
      
-            $sql = 'SELECT * FROM tbtest';
+    $sql = 'SELECT * FROM tbtest';
     $stmt = $pdo->query($sql);
     $results = $stmt->fetchAll();
         foreach ($results as $row){
@@ -198,13 +196,13 @@ if(!empty($_POST["str"]) && empty($_POST["edinum"])){
     $comment = $_POST["str"]; //変更したい名前、変更したいコメントは自分で決めること    
     $stmt->execute();  
     }}}
-      
     
     //削除機能
     if (!empty($_POST["del"]) && !empty($_POST["pass2"])) { 
      $del=$_POST["del"];
      $pass2=$_POST["pass2"];
-                 $sql = 'SELECT * FROM tbtest';
+     
+    $sql = 'SELECT * FROM tbtest';
     $stmt = $pdo->query($sql);
     $results = $stmt->fetchAll();
         foreach ($results as $row){
@@ -220,10 +218,11 @@ if(!empty($_POST["str"]) && empty($_POST["edinum"])){
     $stmt->execute();
     }}}
     
-        $sql = 'SELECT * FROM tbtest';
+    $sql = 'SELECT * FROM tbtest';
     $stmt = $pdo->query($sql);
     $results = $stmt->fetchAll();
     foreach ($results as $row){
+        
         //$rowの中にはテーブルのカラム名が入る
         echo $row['id'].',';
         echo $row['name'].',';
